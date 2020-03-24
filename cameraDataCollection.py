@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#/usr/bin/python
 
 from picamera import PiCamera
 from time import sleep
@@ -18,9 +18,10 @@ def main():
         
         #adjust the path to the test_pic we need for a data point to be annotated later
         picCapture = currWorkingPath + "/testPic_" + str(picNum) + ".jpg"
-        print(picCapture)
-        camera.capture(picCapture)
-        
+        myFile = open(picCapture, 'wb')
+        camera.capture(myFile)
+        myFile.close()
+
         #stops preview to be updated in next iteration of the loop or if at the end, just exit
         camera.stop_preview()
 
