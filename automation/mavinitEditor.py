@@ -22,12 +22,13 @@ def argParser():
 
 def fileWriteCommunications(file, guideX, guideY, guideZ):
     file.write('arm safetyoff\n')
+    file.write('setspeed 1\n')
     file.write('takeoff ' + str(guideZ) + '\n')
     file.write('mode guided' + '\n')
-    file.write('guide ' + str(guideX) + ' ' + str(guideY) + ' ' + str(guideZ) + '\n')
+    file.write('guided ' + str(guideX) + ' ' + str(guideY) + ' ' + str(guideZ) + '\n')
 
 def main():
-    print("editing mavinit right now!\n\n")
+    print("Adjusting mavinit.scr!\n\n")
     args = argParser()
 
     guideX = args.guideX
@@ -37,5 +38,6 @@ def main():
     file = open("mavinit.scr", "w")
     fileWriteCommunications(file, guideX, guideY, guideZ)
     file.close()
+
 if __name__=="__main__":
 	main()
