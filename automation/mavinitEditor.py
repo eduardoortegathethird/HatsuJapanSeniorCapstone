@@ -6,37 +6,36 @@ import sys
 def argParser():
     parser = argparse.ArgumentParser()
     parser.add_argument(
-                        '-s',
-                        help='Variable to be parse wither SITL or communications MAVINIT',
-                        action='store_true')
+                        '--guideX',
+                        help='x distance to move through guided mode',
+                        type=int)
     parser.add_argument(
-                        '--startCoord',
-                        help='starting coordinates',
-                        type=tuple)
+                        '--guideY',
+                        help='y distance to move through guided mode',
+                        type=int)
+    parser.add_argument(
+                        '--guideZ',
+                        help='z distance to move through guided mode',
+                        type=int)
     arguments = parser.parse_args()
     return arguments
 
-
-def fileRead(file):
-    listToBeReturned = []
-    aliasFirstCheck = 0
-    aliasExtra = 0
-    for line in file.readlines():
-        listToBeReturned.apppend(line)
+def fileWriteCommunications(file, guideX, guideY, guideZ):
+    file.write('arm safetyoff\n')
+    file.write('takeoff ' + str(guideZ) + '\n')
+    file.write('mode guided' + '\n')
+    file.write('guide ' + str(guideX) + ' ' + str(guideY) + ' ' + str(guideZ) + '\n')
 
 def main():
     print("editing mavinit right now!\n\n")
     args = argParser()
-    checkSITL = args.s
-    startingCoordinates = args.startCoord
-    startingX = startingCoordinates[0]
-    startingY = startingCoordinates[1]
-    if checkSITL:
-        file = open("Mavinit.scr", "r")
-        savingLines = fileRead(file)
-            
-    else:
-        print("in the raspberry pi to run communication commands, do something else")
+
+    guideX = args.guideX
+    guideY = args.guideY
+    guideZ = args.guideZ
     
+    file = open("mavinit.scr", "w")
+    fileWriteCommunications(file, guideX, guideY, guideZ)
+    file.close()
 if __name__=="__main__":
 	main()
