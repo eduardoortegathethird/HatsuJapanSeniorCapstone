@@ -1,0 +1,26 @@
+<annotation verified="yes">
+	<folder>dataSet_2020-03-22_14_14_07.307590</folder>
+	<filename>testPic_4.jpg</filename>
+	<path>C:\Users\Eduardo Ortega\Documents\seniorCapstone\HatsuJapanSeniorCapstone-master\HatsuJapanSeniorCapstone-master\dataSetSessionOne\dataSet_2020-03-22_14_14_07.307590\testPic_4.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>720</width>
+		<height>480</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Drone</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>185</xmin>
+			<ymin>106</ymin>
+			<xmax>370</xmax>
+			<ymax>289</ymax>
+		</bndbox>
+	</object>
+</annotation>
